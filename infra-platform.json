@@ -1,0 +1,709 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "workspaces": {
+      "type": "object",
+      "properties": {
+        "openbanking-ap-southeast-2-dev": {
+          "type": "object",
+          "properties": {
+            "aws_region": {
+              "type": "string"
+            },
+            "aws_account_id": {
+              "type": "string"
+            },
+            "org_name": {
+              "type": "string"
+            },
+            "notifications_sns_topic_arn": {
+              "type": "string"
+            },
+            "domain": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "zones": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "route53_domain": {
+                          "type": "string"
+                        },
+                        "private": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "route53_domain",
+                        "private"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "route53_domain": {
+                          "type": "string"
+                        },
+                        "private": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "route53_domain",
+                        "private"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "enabled",
+                "zones"
+              ]
+            },
+            "network": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "vpc_cidr": {
+                  "type": "string"
+                },
+                "vpc_newbits": {
+                  "type": "integer"
+                },
+                "multi_nat": {
+                  "type": "boolean"
+                },
+                "transit_subnet": {
+                  "type": "boolean"
+                },
+                "peering": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "enabled",
+                "name",
+                "vpc_cidr",
+                "vpc_newbits",
+                "multi_nat",
+                "transit_subnet",
+                "peering"
+              ]
+            },
+            "vpn": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "hosted_zone": {
+                  "type": "string"
+                },
+                "domain_name": {
+                  "type": "string"
+                },
+                "route_push": {
+                  "type": "string"
+                },
+                "instance_types": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "enabled",
+                "name",
+                "hosted_zone",
+                "domain_name",
+                "route_push",
+                "instance_types"
+              ]
+            },
+            "ecs": {
+              "type": "object",
+              "properties": {
+                "create_iam_service_linked_role": {
+                  "type": "boolean"
+                },
+                "clusters": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "architecture": {
+                          "type": "string"
+                        },
+                        "certificate_arn": {
+                          "type": "string"
+                        },
+                        "kms_key_arn": {
+                          "type": "string"
+                        },
+                        "asg_min": {
+                          "type": "integer"
+                        },
+                        "asg_max": {
+                          "type": "integer"
+                        },
+                        "asg_target_capacity": {
+                          "type": "integer"
+                        },
+                        "on_demand_percentage": {
+                          "type": "integer"
+                        },
+                        "instance_types": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "instance_volume_size": {
+                          "type": "integer"
+                        },
+                        "efs_backup": {
+                          "type": "boolean"
+                        },
+                        "alarm_alb_latency_anomaly_threshold": {
+                          "type": "integer"
+                        },
+                        "alb": {
+                          "type": "boolean"
+                        },
+                        "shutdown_schedule": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean"
+                            },
+                            "cron_stop": {
+                              "type": "string"
+                            },
+                            "cron_start": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "enabled",
+                            "cron_stop",
+                            "cron_start"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "architecture",
+                        "certificate_arn",
+                        "kms_key_arn",
+                        "asg_min",
+                        "asg_max",
+                        "asg_target_capacity",
+                        "on_demand_percentage",
+                        "instance_types",
+                        "instance_volume_size",
+                        "efs_backup",
+                        "alarm_alb_latency_anomaly_threshold",
+                        "alb",
+                        "shutdown_schedule"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "architecture": {
+                          "type": "string"
+                        },
+                        "kms_key_arn": {
+                          "type": "string"
+                        },
+                        "asg_min": {
+                          "type": "integer"
+                        },
+                        "asg_max": {
+                          "type": "integer"
+                        },
+                        "asg_target_capacity": {
+                          "type": "integer"
+                        },
+                        "on_demand_percentage": {
+                          "type": "integer"
+                        },
+                        "instance_types": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "instance_volume_size": {
+                          "type": "integer"
+                        },
+                        "efs_backup": {
+                          "type": "boolean"
+                        },
+                        "alarm_alb_latency_anomaly_threshold": {
+                          "type": "integer"
+                        },
+                        "alb": {
+                          "type": "boolean"
+                        },
+                        "shutdown_schedule": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean"
+                            },
+                            "cron_stop": {
+                              "type": "string"
+                            },
+                            "cron_start": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "enabled",
+                            "cron_stop",
+                            "cron_start"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "architecture",
+                        "kms_key_arn",
+                        "asg_min",
+                        "asg_max",
+                        "asg_target_capacity",
+                        "on_demand_percentage",
+                        "instance_types",
+                        "instance_volume_size",
+                        "efs_backup",
+                        "alarm_alb_latency_anomaly_threshold",
+                        "alb",
+                        "shutdown_schedule"
+                      ]
+                    }
+                  ]
+                },
+                "apps": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "cluster_name": {
+                          "type": "string"
+                        },
+                        "hostnames": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "hostname_redirects": {
+                          "type": "string"
+                        },
+                        "hosted_zone": {
+                          "type": "string"
+                        },
+                        "hostname_create": {
+                          "type": "boolean"
+                        },
+                        "paths": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "healthcheck_path": {
+                          "type": "string"
+                        },
+                        "service_health_check_grace_period_seconds": {
+                          "type": "integer"
+                        },
+                        "cloudwatch_logs_export": {
+                          "type": "boolean"
+                        },
+                        "autoscaling_min": {
+                          "type": "integer"
+                        },
+                        "autoscaling_max": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "cluster_name",
+                        "hostnames",
+                        "hostname_redirects",
+                        "hosted_zone",
+                        "hostname_create",
+                        "paths",
+                        "healthcheck_path",
+                        "service_health_check_grace_period_seconds",
+                        "cloudwatch_logs_export",
+                        "autoscaling_min",
+                        "autoscaling_max"
+                      ]
+                    }
+                  ]
+                },
+                "workers": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "cluster_name": {
+                          "type": "string"
+                        },
+                        "desired_count": {
+                          "type": "integer"
+                        },
+                        "cloudwatch_logs_export": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "cluster_name",
+                        "desired_count",
+                        "cloudwatch_logs_export"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "create_iam_service_linked_role",
+                "clusters",
+                "apps",
+                "workers"
+              ]
+            },
+            "frontend": {
+              "type": "object",
+              "properties": {
+                "bucket_kms_key_arn": {
+                  "type": "string"
+                },
+                "apps": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "environment_name": {
+                          "type": "string"
+                        },
+                        "hostnames": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "hostname_create": {
+                          "type": "boolean"
+                        },
+                        "hosted_zone": {
+                          "type": "string"
+                        },
+                        "certificate_arn": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "environment_name",
+                        "hostnames",
+                        "hostname_create",
+                        "hosted_zone",
+                        "certificate_arn"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "bucket_kms_key_arn",
+                "apps"
+              ]
+            },
+            "rds": {
+              "type": "object",
+              "properties": {
+                "serverless_dbs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "aurora_dbs": {
+                  "type": "array",
+                  "items": {}
+                },
+                "dbs": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "environment_name": {
+                          "type": "string"
+                        },
+                        "cluster_names": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "user": {
+                          "type": "string"
+                        },
+                        "retention": {
+                          "type": "integer"
+                        },
+                        "instance_class": {
+                          "type": "string"
+                        },
+                        "engine": {
+                          "type": "string"
+                        },
+                        "port": {
+                          "type": "integer"
+                        },
+                        "engine_version": {
+                          "type": "string"
+                        },
+                        "parameter_group_name": {
+                          "type": "string"
+                        },
+                        "allocated_storage": {
+                          "type": "integer"
+                        },
+                        "apply_immediately": {
+                          "type": "boolean"
+                        },
+                        "snapshot_identifier": {
+                          "type": "string"
+                        },
+                        "shutdown_schedule": {
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "type": "boolean"
+                            },
+                            "cron_stop": {
+                              "type": "string"
+                            },
+                            "cron_start": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "enabled",
+                            "cron_stop",
+                            "cron_start"
+                          ]
+                        },
+                        "backup": {
+                          "type": "boolean"
+                        },
+                        "storage_encrypted": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "environment_name",
+                        "cluster_names",
+                        "user",
+                        "retention",
+                        "instance_class",
+                        "engine",
+                        "port",
+                        "engine_version",
+                        "parameter_group_name",
+                        "allocated_storage",
+                        "apply_immediately",
+                        "snapshot_identifier",
+                        "shutdown_schedule",
+                        "backup",
+                        "storage_encrypted"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "serverless_dbs",
+                "aurora_dbs",
+                "dbs"
+              ]
+            },
+            "ecr": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "trust_account_ids": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "repositories": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "enabled",
+                "trust_account_ids",
+                "repositories"
+              ]
+            },
+            "backups": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "rule_schedule": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enabled",
+                "name",
+                "rule_schedule"
+              ]
+            },
+            "log_exporter": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "cloudwatch_logs_export_bucket": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enabled",
+                "cloudwatch_logs_export_bucket"
+              ]
+            }
+          },
+          "required": [
+            "aws_region",
+            "aws_account_id",
+            "org_name",
+            "notifications_sns_topic_arn",
+            "domain",
+            "network",
+            "vpn",
+            "ecs",
+            "frontend",
+            "rds",
+            "ecr",
+            "backups",
+            "log_exporter"
+          ]
+        }
+      },
+      "required": [
+        "openbanking-ap-southeast-2-dev"
+      ]
+    }
+  },
+  "required": [
+    "workspaces"
+  ]
+}
